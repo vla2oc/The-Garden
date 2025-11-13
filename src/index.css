@@ -1,0 +1,71 @@
+@import "tailwindcss";
+body {
+  width: 100dvw;
+  font-family: "general", "sans-serif";
+  overflow-x: hidden;
+  background-color: #191400;
+}
+
+@layer base {
+  @font-face {
+    font-family: "general";
+    src: url("/fonts/NotoSansGeorgian_Condensed-Regular.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "general-bold";
+    src: url("/fonts/NotoSansGeorgian_Condensed-Bold.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "general-medium";
+    src: url("/fonts/NotoSansGeorgian_Condensed-Medium.ttf") format("truetype");
+  }
+  @font-face {
+    font-family: "absans";
+    src: url("/fonts/absans-regular.otf") format("opentype");
+  }
+}
+
+@theme {
+  --font-display: "absans", "sans-serif";
+  --font-sans: "general", "sans-serif";
+  --font-sans-bold: "general-bold", "sans-serif";
+  --font-sans-medium: "general-medium", "sans-serif";
+  /*Colors*/
+  --text-color-smoke: #f7f4f3;
+  --text-color-wine: #5b2333;
+}
+/*Masks*/
+@layer utilities {
+  .mask-clip-path {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  .animated-word {
+    @apply font-display font-black opacity-0;
+    transform: translate3d(10px, 51px, -60px) rotateY(60deg) rotateX(-40deg);
+    transform-origin: 50% 50% -150px !important;
+    will-change: opacity, transform;
+  }
+
+  .absolute-center {
+    @apply absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%];
+  }
+  .absolute-top {
+    @apply absolute top-20 left-1/2 translate-x-[-50%];
+  }
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  .about-subtext {
+    @apply absolute bottom-[-80dvh] left-1/2 w-full max-w-96 -translate-x-1/2 text-center text-lg md:max-w-[34rem];
+  }
+  .about-image {
+    @apply absolute left-1/2 top-0 z-20 h-[60vh] w-96 origin-center -translate-x-1/2 overflow-hidden rounded-3xl md:w-[30vw];
+  }
+  .hero-title {
+    @apply font-display uppercase text-smoke text-8xl;
+  }
+  .floating-nav {
+    @apply bg-[#5b2333]/70 rounded-xl border;
+  }
+}
