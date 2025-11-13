@@ -2,11 +2,11 @@ import React, { PureComponent } from "react";
 
 export default function CardMenu({ title, image, subtitle }) {
   return (
-    <div className="relative size h-full">
+    <div className="relative size-full">
       <img
         src={image}
         alt=""
-        className="absolute left-0 top-0 size-full object-cover object-center"
+        className="absolute left-0 top-0  size-full object-cover object-center"
       />
       <div className="relative z-10 flex size-full flex-col justify-between p-6 text-smoke">
         <div>

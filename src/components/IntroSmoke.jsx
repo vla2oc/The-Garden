@@ -10,7 +10,7 @@ export default function IntroSmoke({ isActive }) {
       }`}
     >
       <video
-        src="/videos/introSmoke.mp4"
+        src="/The-Garden/videos/introSmoke.mp4"
         autoPlay
         muted
         className="w-full h-full object-cover"

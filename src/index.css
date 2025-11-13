@@ -63,7 +63,7 @@ body {
     @apply absolute left-1/2 top-0 z-20 h-[60vh] w-96 origin-center -translate-x-1/2 overflow-hidden rounded-3xl md:w-[30vw];
   }
   .hero-title {
-    @apply font-display uppercase text-smoke text-8xl;
+    @apply font-display uppercase text-smoke text-6xl md:text-8xl;
   }
   .floating-nav {
     @apply bg-[#5b2333]/70 rounded-xl border;

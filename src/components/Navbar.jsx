@@ -8,10 +8,24 @@ export default function Navbar() {
   const navContainerRef = useRef(null);
   const [lastScrolly, setLastScrolly] = useState(0);
   const [isNavVisible, setNavVisible] = useState(true);
+  // 1. Отслеживаем, мобильный ли экран
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // breakpoint как в Tailwind (md)
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const { y: currentScrollY } = useWindowScroll();
 
   useEffect(() => {
+    if (isMobile) return;
     if (currentScrollY === 0) {
       setNavVisible(true);
       navContainerRef.current.classList.remove("floating-nav");
@@ -23,15 +37,16 @@ export default function Navbar() {
       navContainerRef.current.classList.add("floating-nav");
     }
     setLastScrolly(currentScrollY);
-  }, [currentScrollY, lastScrolly]);
+  }, [currentScrollY, lastScrolly, isMobile]);
 
   useEffect(() => {
+    if (isMobile) return;
     gsap.to(navContainerRef.current, {
       y: isNavVisible ? 0 : -100,
       opacity: isNavVisible ? 1 : 0,
       duration: 0.2,
     });
-  }, [isNavVisible]);
+  }, [isNavVisible, isMobile]);
 
   return (
     <div

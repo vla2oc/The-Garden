@@ -42,7 +42,7 @@ export default function About() {
       <div id="clip" className="h-dvh w-screen">
         <div className="mask-clip-path about-image">
           <img
-            src="/img/about.jpg"
+            src="/The-Garden/img/about.jpg"
             alt=""
             className="absolute left-0 top-0 size-full object-cover"
           />

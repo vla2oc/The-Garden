@@ -30,14 +30,14 @@ export default function Hero({ isIntroActive }) {
         <div className="relative h-dvh w-screen overflow-x-hidden">
           <div
             id="video-frame"
-            className="relative z-10 h-dvh w-screen overflow-hidden rounde"
+            className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg"
           >
             <video
-              src="/videos/smoke_red.mp4"
+              src="/The-Garden/videos/smoke_red.mp4"
               autoPlay
               muted
               loop
-              className="absolute-center absolute z-20 object-cover object-center"
+              className="absolute z-20 left-0 top-0 size-full object-cover object-center"
             />
           </div>
           <div className="absolute-center z-40">
