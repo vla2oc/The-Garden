@@ -8,12 +8,12 @@ export default function Navbar() {
   const navContainerRef = useRef(null);
   const [lastScrolly, setLastScrolly] = useState(0);
   const [isNavVisible, setNavVisible] = useState(true);
-  // 1. Отслеживаем, мобильный ли экран
+
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768); // breakpoint как в Tailwind (md)
+      setIsMobile(window.innerWidth < 768);
     };
 
     checkMobile();
@@ -42,6 +42,8 @@ export default function Navbar() {
   useEffect(() => {
     if (isMobile) return;
     gsap.to(navContainerRef.current, {
+      backdropFilter: isNavVisible ? "blur(10px)" : "blur(0px)",
+      backgroundColor: isNavVisible ? "rgba(0,0,0,0.1)" : "transparent",
       y: isNavVisible ? 0 : -100,
       opacity: isNavVisible ? 1 : 0,
       duration: 0.2,
@@ -51,7 +53,7 @@ export default function Navbar() {
   return (
     <div
       ref={navContainerRef}
-      className="fixed inset-x-0 top-5 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6"
+      className="fixed inset-x-0  z-50 h-16 border-none transition-all duration-700 sm:inset-x-6"
     >
       <header className="absolute top-1/2 w-full -translate-y-1/2">
         <nav className="flex size-full items-center justify-center p-10 ">
