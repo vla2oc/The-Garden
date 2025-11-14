@@ -4,6 +4,8 @@ import IntroSmoke from "./components/IntroSmoke";
 import About from "./components/About";
 import Navbar from "./components/Navbar";
 import Menu from "./components/Menu";
+import Taras from "./components/Taras";
+import Footer from "./components/Footer";
 
 function App() {
   const [isIntroActive, setIntroActive] = useState(true);
@@ -22,6 +24,8 @@ function App() {
       <Hero isIntroActive={isIntroActive} />
       <About />
       <Menu />
+      <Taras />
+      <Footer />
     </main>
   );
 }
