@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Menu from "./components/Menu";
 import Taras from "./components/Taras";
 import Footer from "./components/Footer";
+import Maps from "./components/Maps";
 
 function App() {
   const [isIntroActive, setIntroActive] = useState(true);
@@ -25,6 +26,7 @@ function App() {
       <About />
       <Menu />
       <Taras />
+      <Maps />
       <Footer />
     </main>
   );

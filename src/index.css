@@ -56,6 +56,9 @@ body {
   .absolute-top {
     @apply absolute top-20 left-1/2 translate-x-[-50%];
   }
+  .absolute-left {
+    @apply absolute top-20 left-1/2;
+  }
   .flex-center {
     @apply flex justify-center items-center;
   }
