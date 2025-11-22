@@ -7,6 +7,8 @@ import Menu from "./components/Menu";
 import Taras from "./components/Taras";
 import Footer from "./components/Footer";
 import Maps from "./components/Maps";
+import TarasMapsTransition from "./components/lib/TarasMapsTransition";
+import HeroAboutTransition from "./components/lib/HeroAboutTransition";
 
 function App() {
   const [isIntroActive, setIntroActive] = useState(true);
@@ -22,11 +24,9 @@ function App() {
     <main className="relative min-h-screen w-screen overflow-hidden">
       <Navbar />
       <IntroSmoke isActive={isIntroActive} />
-      <Hero isIntroActive={isIntroActive} />
-      <About />
+      <HeroAboutTransition isIntroActive={isIntroActive} />
       <Menu />
-      <Taras />
-      <Maps />
+      <TarasMapsTransition />
       <Footer />
     </main>
   );

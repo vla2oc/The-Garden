@@ -1,34 +1,38 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import AnimatedTitle from "./AnimatedTitle";
+import aboutSmooth from "./animation/aboutSmooth";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function About() {
-  useGSAP(() => {
-    const clipAnimation = gsap.timeline({
-      scrollTrigger: {
-        trigger: "#clip",
-        start: "center center",
-        end: "+=800 center",
-        scrub: 0.5,
-        pin: true,
-        pinSpacing: true,
-      },
-    });
+export default function About({ withScroll = false }) {
+  const sectionRef = useRef(null);
 
-    clipAnimation.to(".mask-clip-path", {
-      width: "100vw",
-      height: "100vh",
-      border: 0,
-    });
-  });
+  useGSAP(
+    () => {
+      if (!withScroll) return;
+
+      const clipAnimation = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#clip",
+          start: "center center",
+          end: "+=200 center",
+          scrub: 0.5,
+          pin: true,
+          pinSpacing: true,
+        },
+      });
+
+      clipAnimation.add(aboutSmooth(sectionRef));
+    },
+    { scope: sectionRef, dependencies: [withScroll] }
+  );
 
   return (
-    <div id="about" className="min-h-screen w-screen">
-      <div className="relative mb-8 mt-20 flex flex-col items-center gap-5">
+    <div id="about" ref={sectionRef} className="min-h-screen bg-black w-screen">
+      <div className="relative mb-42 flex flex-col items-center gap-5">
         <AnimatedTitle
           title={["Nasz główny miks:"]}
           container="mt-5 text-center  font-display text-7xl leading-relaxed uppercase text-smoke "

@@ -3,10 +3,11 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import AnimatedTitle from "./AnimatedTitle";
+import TarasSwiper from "./animation/tarasSwiper";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Taras() {
+export default function Taras({ withScroll = false }) {
   const sectionRef = useRef(null);
 
   const images = [
@@ -17,6 +18,7 @@ export default function Taras() {
 
   useGSAP(
     () => {
+      if (!withScroll) return;
       const ctx = gsap.context(() => {
         ScrollTrigger.matchMedia({
           "(min-width: 768px)": () => {
@@ -31,11 +33,7 @@ export default function Taras() {
               },
             });
 
-            tl.to(".taras-track", {
-              xPercent: -100 * (totalCards - 1),
-              ease: "none",
-              force3D: true,
-            });
+            tl.add(TarasSwiper(sectionRef, totalCards));
           },
 
           // MOBILE
@@ -56,7 +54,7 @@ export default function Taras() {
 
       return () => ctx.revert();
     },
-    { scope: sectionRef, dependencies: [totalCards] }
+    { scope: sectionRef, dependencies: [totalCards, withScroll] }
   );
 
   return (

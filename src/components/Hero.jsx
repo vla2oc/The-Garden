@@ -1,25 +1,7 @@
 import React from "react";
 import AnimatedTitle from "./AnimatedTitle";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 
 export default function Hero({ isIntroActive }) {
-  useGSAP(() => {
-    if (isIntroActive) {
-      return;
-    }
-    const tl = gsap.timeline({
-      delay: 0.1,
-    });
-
-    tl.from(".animated-word", {
-      opacity: 0,
-      y: -60,
-      stagger: 0.05,
-      ease: "power1.out",
-      duration: 1,
-    });
-  }, [isIntroActive]);
   {
     return (
       <section

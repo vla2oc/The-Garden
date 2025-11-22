@@ -1,5 +1,9 @@
 import React from "react";
 import AnimatedTitle from "./AnimatedTitle";
+import { FaPhoneAlt } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { FaLocationArrow } from "react-icons/fa";
+
 export default function Maps() {
   return (
     <section className="min-h-screen w-full overflow-hidden ">
@@ -27,6 +31,23 @@ export default function Maps() {
             <h1 className="hero-title !text-7xl font-black tracking-wider text-center ">
               Kontakt
             </h1>
+            <div className="flex flex-col justify-end mt-15">
+              <p className=" text-smoke gap-8 font-bold text-2xl flex justify-center font-display">
+                <FaPhoneAlt size={30} />
+                +48 099 112 312
+              </p>
+              <hr class="h-px my-6  bg-gray-500 border-0"></hr>
+              <p className=" text-smoke gap-8 font-bold text-2xl flex justify-center font-display">
+                <MdEmail size={30} />
+                garden@info.com
+              </p>
+              <hr class="h-px my-6  bg-gray-500 border-0"></hr>
+              <p className=" text-smoke gap-8 font-bold text-2xl flex justify-center font-display">
+                <FaLocationArrow size={30} />
+                Antoniego Słonimskiego 2, 40-133 Katowice
+              </p>
+              <hr class="h-px my-6  bg-gray-500 border-0"></hr>
+            </div>
           </div>
         </div>
       </div>
