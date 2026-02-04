@@ -3,7 +3,6 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import AnimatedTitle from "./AnimatedTitle";
-import aboutSmooth from "./animation/aboutSmooth";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,7 +12,7 @@ export default function About({ withScroll = false }) {
   useGSAP(
     () => {
       if (!withScroll) return;
-
+      console.log("Animation starting");
       const clipAnimation = gsap.timeline({
         scrollTrigger: {
           trigger: "#clip",
@@ -25,9 +24,9 @@ export default function About({ withScroll = false }) {
         },
       });
 
-      clipAnimation.add(aboutSmooth(sectionRef));
+      console.log("Timeline created:", clipAnimation);
     },
-    { scope: sectionRef, dependencies: [withScroll] }
+    { scope: sectionRef, dependencies: [withScroll] },
   );
 
   return (
@@ -43,13 +42,20 @@ export default function About({ withScroll = false }) {
           </p>
         </div>
       </div>
-      <div id="clip" className="h-dvh w-screen">
-        <div className="mask-clip-path about-image">
+      <div id="clip" className="h-dvh w-screen ">
+        <div className="mask-clip-path about-image z-0">
           <img
-            src="/The-Garden/img/about.jpg"
+            src="/The-Garden/img/loungebar.png"
             alt=""
             className="absolute left-0 top-0 size-full object-cover"
           />
+        </div>
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none">
+          <div className="about-overlay-text text-center p-10">
+            <h1 className="font-display text-white text-7xl uppercase max-w-md">
+              Atmosphere
+            </h1>
+          </div>
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/all";
 import Hero from "../Hero";
 import About from "../About";
 import aboutSmooth from "../animation/aboutSmooth";
+import aboutText from "../animation/aboutText";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroAboutTransition({ isIntroActive }) {
@@ -31,11 +32,13 @@ export default function HeroAboutTransition({ isIntroActive }) {
         });
         const cliptl = aboutSmooth(sectionRef);
         master.add(cliptl, ">");
+        const textTl = aboutText(sectionRef);
+        master.add(textTl, "<");
       }, sectionRef);
 
       return () => ctx.revert();
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
   return (
     <section

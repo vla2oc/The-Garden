@@ -11,8 +11,8 @@ export default function Taras({ withScroll = false }) {
   const sectionRef = useRef(null);
 
   const images = [
-    { id: 1, src: "/The-Garden/img/taras.jpg" },
-    { id: 2, src: "/The-Garden/img/Hookah.jpg" },
+    { id: 1, src: "/The-Garden/img/taras.png" },
+    { id: 2, src: "/The-Garden/img/tarasZoom.png" },
   ];
   const totalCards = images.length;
 
@@ -54,7 +54,7 @@ export default function Taras({ withScroll = false }) {
 
       return () => ctx.revert();
     },
-    { scope: sectionRef, dependencies: [totalCards, withScroll] }
+    { scope: sectionRef, dependencies: [totalCards, withScroll] },
   );
 
   return (
@@ -79,17 +79,24 @@ export default function Taras({ withScroll = false }) {
             ))}
           </div>
 
-          <div className="pointer-events-none absolute inset-0 flex items-center">
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
             <div className="container absolute-top mx-auto px-3 md:px-20">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                <div>
+              <div className="flex justify-center">
+                <div className="max-w-3xl relative w-full p-6">
+                  <div className="absolute inset-0 bg-black/16  rounded-2xl" />
                   <AnimatedTitle
                     title={["Taras"]}
                     container="text-6xl md:text-9xl tracking-widest text-smoke font-display font-extrabold uppercase text-center md:text-left"
                   />
-                </div>
-                <div className="flex items-center">
-                  <p className="text-lg md:text-2xl leading-relaxed"></p>
+
+                  <p className="text-lg  font-display text-center mt-8 md:text-2xl leading-relaxed">
+                    Poczuj rytm miasta z perspektywy naszego tarasu. <br />
+                    Przestronna strefa na świeżym powietrzu, oświetlona ciepłymi
+                    girlandami, to doskonałe miejsce na spotkania towarzyskie.{" "}
+                    <br />
+                    Wygodne fotele i przytulna aranżacja sprawiają, że nawet
+                    chłodniejsze wieczory stają się tu gorące.
+                  </p>
                 </div>
               </div>
             </div>
@@ -105,17 +112,18 @@ export default function Taras({ withScroll = false }) {
             />
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-6 ">
             {images.map((image) => (
               <div
                 key={image.id}
-                className="taras-mobile-img overflow-hidden rounded-xl"
+                className="taras-mobile-img relative overflow-hidden rounded-xl"
               >
                 <img
                   src={image.src}
                   alt=""
                   className="h-64 w-full object-cover object-center"
                 />
+                <div className="absolute inset-0 bg-black " />
               </div>
             ))}
           </div>
