@@ -76,9 +76,6 @@ This project uses the latest stable versions of the ecosystem.
 
 ---
 
-## 📬 Contact
-
-Project Link: [https://github.com/your-username/digital-garden](https://github.com/your-username/digital-garden)
 
 ---
 
